@@ -1,13 +1,15 @@
 package jprogr.springbootquickstart.util;
 
+import org.springframework.stereotype.Service;
 import java.util.Random;
 
-public class RandomString
+@Service
+public class RandomUtil
 {
     private static String chars = "aceimnorsuvwxz";
     private static Random randomSource = new Random();
 
-    public static String get()
+    public String getString()
     {
         StringBuilder randomString = new StringBuilder();
         int length = 10;

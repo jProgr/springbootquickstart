@@ -2,34 +2,20 @@ package jprogr.springbootquickstart.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.beans.factory.annotation.Autowired;
 import jprogr.springbootquickstart.entities.Topic;
+import jprogr.springbootquickstart.services.TopicService;
 import java.util.List;
-import java.util.ArrayList;
-import jprogr.springbootquickstart.util.RandomString;
 
 @RestController
 public class TopicController
 {
+    @Autowired
+    private TopicService topicService;
+
     @RequestMapping("/topics")
     public List<Topic> getAllTopics()
     {
-        return getRandomTopics();
-    }
-
-    private List<Topic> getRandomTopics()
-    {
-        List<Topic> topics = new ArrayList();
-
-        topics.add(
-            new Topic(RandomString.get(), RandomString.get(), RandomString.get())
-        );
-        topics.add(
-            new Topic(RandomString.get(), RandomString.get(), RandomString.get())
-        );
-        topics.add(
-            new Topic(RandomString.get(), RandomString.get(), RandomString.get())
-        );
-
-        return topics;
+        return topicService.getAllTopics();
     }
 }
