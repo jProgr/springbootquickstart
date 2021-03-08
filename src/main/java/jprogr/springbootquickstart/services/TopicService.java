@@ -20,13 +20,22 @@ public class TopicService
     private void bootTopics()
     {
         topics = Arrays.asList(
-            new Topic(randomSource.getString(), randomSource.getString(), randomSource.getString()),
-            new Topic(randomSource.getString(), randomSource.getString(), randomSource.getString())
+            new Topic("a", randomSource.getString(), randomSource.getString()),
+            new Topic("b", randomSource.getString(), randomSource.getString())
         );
     }
 
     public List<Topic> getAllTopics()
     {
         return topics;
+    }
+
+    public Topic getById(String id)
+    {
+        return topics
+            .stream()
+            .filter(t -> t.getId().equals(id))
+            .findFirst()
+            .get();
     }
 }
