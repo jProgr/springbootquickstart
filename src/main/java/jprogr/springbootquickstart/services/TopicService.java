@@ -3,7 +3,7 @@ package jprogr.springbootquickstart.services;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
-import java.util.Arrays;
+import java.util.ArrayList;
 import jprogr.springbootquickstart.entities.Topic;
 import jprogr.springbootquickstart.util.RandomUtil;
 import javax.annotation.PostConstruct;
@@ -19,10 +19,10 @@ public class TopicService
     @PostConstruct
     private void bootTopics()
     {
-        topics = Arrays.asList(
-            new Topic("a", randomSource.getString(), randomSource.getString()),
-            new Topic("b", randomSource.getString(), randomSource.getString())
-        );
+        topics = new ArrayList();
+
+        topics.add(new Topic("a", randomSource.getString(), randomSource.getString()));
+        topics.add(new Topic("b", randomSource.getString(), randomSource.getString()));
     }
 
     public List<Topic> getAllTopics()
@@ -37,5 +37,10 @@ public class TopicService
             .filter(t -> t.getId().equals(id))
             .findFirst()
             .get();
+    }
+
+    public void add(Topic topic)
+    {
+        topics.add(topic);
     }
 }
