@@ -51,4 +51,9 @@ public class TopicService
             topic
         );
     }
+
+    public void delete(String id)
+    {
+        topics.remove(getById(id));
+    }
 }
