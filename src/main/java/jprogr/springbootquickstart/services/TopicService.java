@@ -43,4 +43,12 @@ public class TopicService
     {
         topics.add(topic);
     }
+
+    public void update(String id, Topic topic)
+    {
+        topics.set(
+            topics.indexOf(getById(id)),
+            topic
+        );
+    }
 }
